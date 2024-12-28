@@ -1,15 +1,16 @@
 # ES Studies - Bible Study Platform
 
-A modern web application for managing and tracking Bible studies, built with React, TypeScript, and Tailwind CSS.
+A modern web application for managing and tracking Bible studies, built with React, TypeScript, and Firebase.
 
 ## Features
 
-- 🔐 Secure authentication system
+- 🔐 Secure authentication with Firebase
 - 👤 User profile management
 - 📚 Weekly Bible study tracking
 - 📊 Progress visualization
 - 🎯 Daily study goals
 - 📱 Responsive design
+- 🔄 Real-time data synchronization
 
 ## Tech Stack
 
@@ -17,6 +18,9 @@ A modern web application for managing and tracking Bible studies, built with Rea
 - **Type System:** TypeScript
 - **Styling:** Tailwind CSS
 - **Routing:** React Router v6
+- **Backend:** Firebase
+  - Authentication
+  - Firestore Database
 - **Icons:** Lucide React
 - **Build Tool:** Vite
 
@@ -26,27 +30,39 @@ A modern web application for managing and tracking Bible studies, built with Rea
 src/
 ├── components/        # Reusable UI components
 │   ├── auth/         # Authentication related components
-│   ├── layout/       # Layout components (Header, Container)
+│   ├── layout/       # Layout components
 │   ├── profile/      # Profile related components
 │   ├── study/        # Study tracking components
 │   └── ui/           # Base UI components
+├── config/           # Configuration files
+│   ├── constants.ts  # Application constants
+│   └── firebase.ts   # Firebase configuration
 ├── contexts/         # React contexts
-├── data/            # Static data and mock data
+├── data/            # Static data
 ├── hooks/           # Custom React hooks
 ├── pages/           # Page components
-├── types/           # TypeScript type definitions
-├── utils/           # Utility functions
-└── routes/          # Route definitions
+├── services/        # Firebase service layers
+├── types/           # TypeScript definitions
+└── utils/           # Utility functions
 ```
 
 ## Getting Started
 
 1. Clone the repository
-2. Install dependencies:
+2. Create a `.env` file with your Firebase configuration:
+   ```
+   VITE_FIREBASE_API_KEY=your_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+   VITE_FIREBASE_APP_ID=your_app_id
+   ```
+3. Install dependencies:
    ```bash
    npm install
    ```
-3. Start the development server:
+4. Start the development server:
    ```bash
    npm run dev
    ```
@@ -67,33 +83,47 @@ For testing purposes, use these credentials:
 - Password: demo12345
 - Church: Church 1
 
-## Key Features Implementation
+## Firebase Integration
 
 ### Authentication
+- Email/password authentication
+- Persistent sessions
+- Protected routes
+- Error handling
 
+### Firestore Database
+- User profiles
+- Weekly study tracking
+- Progress persistence
+- Real-time updates
+
+## Key Features Implementation
+
+### Authentication Flow
 - Protected routes using React Router
 - Context-based auth state management
-- Secure login form with validation
+- Firebase Auth integration
+- Error handling and validation
 
 ### Profile Management
-
-- User profile creation and editing
-- Profile photo upload interface
-- Basic user information management
+- Firestore user profiles
+- Profile data persistence
+- Basic information management
+- Church affiliation
 
 ### Study Tracking
-
-- Weekly progress visualization
+- Weekly progress in Firestore
 - Daily study completion tracking
-- Lesson carousel navigation
-- Progress persistence using localStorage
+- Lesson navigation
+- Progress synchronization
 
 ## Best Practices
 
 - 🎯 Single responsibility principle
-- 📦 Component modularity
-- 🔄 State management with React Context
+- 📦 Modular component architecture
+- 🔄 Firebase service abstraction
 - 🎨 Consistent styling with Tailwind
 - 📱 Mobile-first responsive design
-- 🔒 Protected routes implementation
+- 🔒 Secure authentication flow
 - 🎭 TypeScript for type safety
+- 🏗️ Clean code architecture
